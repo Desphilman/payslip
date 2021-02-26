@@ -3,8 +3,8 @@ workdir=$1
 firstNames=( Hadi Mansour)
 lastNames=( Dezfuly Ghamami)
 emails=( Iman.Dezfuly@Desphilman.com Iman.Dezfuly@desphilman.com )
-#emails=( Hadi.Dezfuly@Desphilman.com Mansour.Ghamami@desphilman.com )
-ccemail="Iman.Dezfuly@desphilman.com"
+emails=( Hadi.Dezfuly@Desphilman.com Mansour.Ghamami@desphilman.com )
+ccemail="Iman.Dezfuly@desphilman.com,hadi.dezfuly@desphilman.com,finance@desphilman.com"
 
 datetime=`date +"%d-%m-%Y"`
 
