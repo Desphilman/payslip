@@ -4,25 +4,59 @@ This is couple of shellscripts which once run will generate and send payslip pdf
 
 ## pre-requisits
 
-you need to setup ssh key-exchange based login between your shell and finance@desphilman.com. (otherwise you will have to enter password a number of times)
-you also need an RTF file containing payslip wich is named in this format:
+### There is a config.json file in the project, this must be updated with the correct path to a csv file.
 
-`payslip-Firstname-Lastname.rtf`
+### There must be a file with the name <payslips-yyyy-mm-dd.csv> in the workFolder defined in the config.json file and this file must have been generated using the company salary excel worksheet.
 
-For more safety and to ensure accidental payslips woun't be issued, the actual emails are also commented out, so you will need to uncomment line 6 of send-payslips-dynamic.sh for payslips to be sent to real peoples emails.
+an example file name is : payslips-2021-04-09.csv
+
+file must have proper fileds like this:
+
+```
+[
+  {
+    Reference: 'PAYSLIP-0012311',
+    payslipDate: '2021-04-09',
+    Title: 'Mr',
+    FirstName: 'Iman',
+    LastName: 'Dezfuly',
+    Email: 'Iman.Dezfuly@Desphilman.com',
+    Item1Description: 'Desphilman',
+    AUDPerDay1: '10.05',
+    Item2Description: 'TraceMate',
+    AUDPerDay2: '2.5',
+    Item3Description: '',
+    AUDPerDay3: '',
+    Item4Description: '',
+    AUDPerDay4: '',
+    Start: '2021-03-29',
+    End: '2021-04-11',
+    Days: '8',
+    Item1Sub: '100',
+    Item2Sub: '20',
+    Item3Sub: '',
+    Item4Sub: '',
+    TotalAUD: '120',
+    Rate: '195000',
+    TotalIRR: '23400000'
+  }]
+
+```
+
+#### Plz note: no slash at the end of workFolder path
+
+### you must have done ssh-copy-id with finance@desphilman.com for this to work
 
 ## Running payslips
 
-This command will send payslips:
+This command will Generate payslips:
 
-`./send-payslips-dynamic.sh ~/Documents/Desphilman/PayAdvise`
+`.node index.js 2021-04-09`
 
-the first part is path to shell script (change it according to your folder structure) and second one is a folder containing your payadvise files with the above mentioned name format.
+The following will create pdfs and send them to test emails:
 
-## do not use send-payslip.sh
+`node index.js 2021-04-09 --send-to-test-email`
 
-This file is old and is commented out intentionally. Please use the dynamic file instead.
+and the following will create and send them to the real emails mentioned in the csv file:
 
-## Confirmation is done with complete word "yes"
-
-You must type "yes" on confirmation to go ahead, anything else ( including "y") will exit without doing anything.
+`node index.js 2021-04-09 --send-to-employees`
