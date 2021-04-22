@@ -24,8 +24,8 @@ function desphilmanIranPaySlip({
 	const doc = new PDFDocument();
 	doc.pipe(fs.createWriteStream(fileName));
 
-	doc.fontSize(10).text("Issue date:", 60, 210);
-	doc.text(new Date().toDateString(), 130, 210);
+	doc.fontSize(10).text("Issue date:", 60, 208);
+	doc.text(new Date().toDateString(), 130, 208);
 
 	doc.fontSize(10).text("Ref number:", 60, 224);
 	doc.text(refNumber, 130, 224);
