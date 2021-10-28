@@ -4,7 +4,8 @@ firstName=$2
 lastName=$3
 psemail=$4
 ccemail=$5
-fileName=$6
+bccemail=$6
+fileName=$7
 
 datetime=`date +"%d-%m-%Y"`
 
@@ -27,7 +28,7 @@ financeFolder=PayAdvises
 financeFileName="~/$financeFolder/$fileName"
 scp "$workdir/$fileName" "finance@desphilman.com:/home/finance/$financeFolder"
 
-ssh finance@desphilman.com "echo \"$letterText\" | mutt -c $ccemail -s \"$subject\" $psemail -a $financeFileName"
+ssh finance@desphilman.com "echo \"$letterText\" | mutt -c $ccemail -b $bccemail -s \"$subject\" $psemail -a $financeFileName"
 
 echo "payslip from file $fileName sent to $firstName $lastName email $psemail ."
 

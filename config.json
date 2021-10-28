@@ -1,5 +1,6 @@
 {
-	"ccEmails": "Iman.Dezfuly@desphilman.com,hadi.dezfuly@desphilman.com,finance@desphilman.com",
+	"ccEmails": "finance@desphilman.com",
+	"bccEmails": "Iman.Dezfuly@desphilman.com,Hadi.Dezfuly@desphilman.com,Reza.Hashemi@desphilman.com",
 	"testEmail": "Iman.Dezfuly@desphilman.com",
 	"workFolder": "/home/iman/Documents/Desphilman/PayAdvise"
 }

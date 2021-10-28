@@ -20,6 +20,7 @@ function desphilmanIranPaySlip({
 		"Total Rials",
 		"17600000",
 	],
+	Message = "Desphilman the man of the truth.",
 }) {
 	const doc = new PDFDocument();
 	doc.pipe(fs.createWriteStream(fileName));
@@ -30,11 +31,13 @@ function desphilmanIranPaySlip({
 	doc.fontSize(10).text("Ref number:", 60, 224);
 	doc.text(refNumber, 130, 224);
 
-	doc.fontSize(12).text(
-		`Dear ${title} ${fullName}\nThis is to advise as per your software development contract with Desphilman Pty Ltd,\nthe following amount of remuneration was paid to your nominated bank account:`,
-		65,
-		260
-	);
+	doc
+		.fontSize(12)
+		.text(
+			`Dear ${title} ${fullName}\nThis is to advise as per your software development contract with Desphilman Pty Ltd,\nthe following amount of remuneration was paid to your nominated bank account:`,
+			65,
+			260
+		);
 
 	doc.image("./images/desphilman_logo_gq.png", 210, 04, {
 		fit: [180, 180],
@@ -42,17 +45,25 @@ function desphilmanIranPaySlip({
 		valign: "center",
 	});
 
+	// doc.image("./images/cyrus-the-great.png", 225, 10, {
+	// 	fit: [150, 150],
+	// 	align: "center",
+	// 	valign: "center",
+	// });
+
 	doc.fontSize(20).text("Desphilman PTY LTD", 210, 170);
 
 	doc.moveTo(40, 340);
-	doc.lineWidth(2)
+	doc
+		.lineWidth(2)
 		.lineTo(560, 340)
 		.lineTo(560, 490)
 		.lineTo(40, 490)
 		.lineTo(40, 339.5)
 		.stroke();
 	doc.moveTo(40, 370).lineTo(560, 370).stroke();
-	doc.moveTo(40, 490)
+	doc
+		.moveTo(40, 490)
 		.lineTo(560, 490)
 		.lineTo(560, 540)
 		.lineTo(40, 540)
@@ -115,12 +126,15 @@ function desphilmanIranPaySlip({
 	doc.fontSize(12).text(sumItem2[2], 224 - 30, 520);
 	doc.fontSize(12).text(sumItem2[4], 360, 520);
 	doc.fontSize(12).text(sumItem2[5], 430, 520);
+	// message
+	doc.fontSize(12).text(Message, 50, 550);
 
 	doc.fontSize(12).text("Regards,", 40, 660);
 	doc.fontSize(12).text("Desphilman finance", 40, 680);
 
 	// Apply some transf9.5orms and render an SVG path with the 'even-odd' fill rule
-	doc.scale(0.6)
+	doc
+		.scale(0.6)
 		.translate(470, -380)
 		.path("M 250,75 L 323,301 131,161 369,161 177,301 z")
 		.fill("red", "even-odd")

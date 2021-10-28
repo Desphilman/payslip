@@ -4,7 +4,7 @@ const csvtojsonV2 = require("csvtojson");
 const config = require("./config.json");
 const { exec } = require("child_process");
 
-const { workFolder, testEmail, ccEmails } = config;
+const { workFolder, testEmail, ccEmails, bccEmails } = config;
 
 console.log(process.argv);
 
@@ -48,6 +48,7 @@ csvtojsonV2()
 				TotalAUD,
 				Rate,
 				TotalIRR,
+				Message,
 			} = payslip;
 			const fileName = `payslip-${FirstName}-${LastName}-${payslipDate}.pdf`;
 			const fileNamePath = `${workFolder}/${fileName}`;
@@ -65,14 +66,7 @@ csvtojsonV2()
 					"AUD/day",
 					"AUD Subtotal",
 				],
-				item1: [
-					Item1Description,
-					Start,
-					End,
-					Days,
-					AUDPerDay1,
-					Item1Sub,
-				],
+				item1: [Item1Description, Start, End, Days, AUDPerDay1, Item1Sub],
 				item2: [
 					Item2Description,
 					Item2Description ? Start : "",
@@ -106,6 +100,7 @@ csvtojsonV2()
 					"Total Rials",
 					TotalIRR,
 				],
+				Message,
 			});
 
 			if (isTestSend) {
@@ -125,7 +120,7 @@ csvtojsonV2()
 				);
 			} else if (isRealSend) {
 				exec(
-					`./email-payslip.sh ${workFolder} ${FirstName} ${LastName} ${Email} ${ccEmails} ${fileName}`,
+					`./email-payslip.sh ${workFolder} ${FirstName} ${LastName} ${Email} ${ccEmails} ${bccEmails} ${fileName}`,
 					(error, stdout, stderr) => {
 						if (error) {
 							console.log(`error: ${error.message}`);
