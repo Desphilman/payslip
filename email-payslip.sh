@@ -26,6 +26,8 @@ echo $letterText;
 
 financeFolder=PayAdvises
 financeFileName="~/$financeFolder/$fileName"
+
+echo "$workdir/$fileName" "finance@desphilman.com:/home/finance/$financeFolder"
 scp "$workdir/$fileName" "finance@desphilman.com:/home/finance/$financeFolder"
 
 ssh finance@desphilman.com "echo \"$letterText\" | mutt -c $ccemail -b $bccemail -s \"$subject\" $psemail -a $financeFileName"

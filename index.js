@@ -105,7 +105,7 @@ csvtojsonV2()
 
 			if (isTestSend) {
 				exec(
-					`./email-payslip.sh ${workFolder} ${FirstName} ${LastName} ${testEmail} ${testEmail} ${fileName}`,
+					`./email-payslip.sh ${workFolder} ${FirstName} ${LastName} ${testEmail} ${testEmail} ${testEmail} ${fileName}`,
 					(error, stdout, stderr) => {
 						if (error) {
 							console.log(`error: ${error.message}`);
