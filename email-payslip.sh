@@ -28,9 +28,9 @@ financeFolder=PayAdvises
 financeFileName="~/$financeFolder/$fileName"
 
 echo "$workdir/$fileName" "finance@desphilman.com:/home/finance/$financeFolder"
-scp -P 2222 "$workdir/$fileName" "finance@desphilman.com:/home/finance/$financeFolder"
+scp -P 6222 "$workdir/$fileName" "finance@desphilman.com:/home/finance/$financeFolder"
 
-ssh -p 2222 finance@desphilman.com "echo \"$letterText\" | mutt -c $ccemail -b $bccemail -s \"$subject\" $psemail -a $financeFileName"
+ssh -p 6222 finance@desphilman.com "echo \"$letterText\" | mutt -c $ccemail -b $bccemail -s \"$subject\" $psemail -a $financeFileName"
 
 echo "payslip from file $fileName sent to $firstName $lastName email $psemail ."
 
