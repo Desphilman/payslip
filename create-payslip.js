@@ -2,6 +2,7 @@ const PDFDocument = require("pdfkit");
 const fs = require("fs");
 
 function desphilmanIranPaySlip({
+	imageName = "./images/desphilman_logo.png",
 	fileName = "output.pdf",
 	title = "Mr.",
 	fullName = "Hadi Dezfuly",
@@ -39,8 +40,8 @@ function desphilmanIranPaySlip({
 			260
 		);
 
-	doc.image("./images/desphilman_logo_gq.png", 210, 04, {
-		fit: [180, 180],
+	doc.image(imageName, 210, 04, {
+		fit: [170, 170],
 		align: "center",
 		valign: "center",
 	});

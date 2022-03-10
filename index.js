@@ -11,6 +11,7 @@ console.log(process.argv);
 const payslipDate = process.argv[2];
 const csvFilePath = `${workFolder}/payslips-${payslipDate}.csv`;
 const sendType = process.argv[3];
+const imageName = process.argv[4];
 
 const isRealSend = sendType === "--send-to-employees";
 const isTestSend = sendType === "--send-to-test-email";
@@ -40,7 +41,10 @@ csvtojsonV2()
 				AUDPerDay4,
 				Start,
 				End,
-				Days,
+				Days1,
+				Days2,
+				Days3,
+				Days4,
 				Item1Sub,
 				Item2Sub,
 				Item3Sub,
@@ -54,6 +58,7 @@ csvtojsonV2()
 			const fileNamePath = `${workFolder}/${fileName}`;
 
 			const pdfFile = desphilmanIranPaySlip({
+				imageName,
 				fileName: fileNamePath,
 				title: Title,
 				fullName: `${FirstName} ${LastName}`,
@@ -66,12 +71,12 @@ csvtojsonV2()
 					"AUD/day",
 					"AUD Subtotal",
 				],
-				item1: [Item1Description, Start, End, Days, AUDPerDay1, Item1Sub],
+				item1: [Item1Description, Start, End, Days1, AUDPerDay1, Item1Sub],
 				item2: [
 					Item2Description,
 					Item2Description ? Start : "",
 					Item2Description ? End : "",
-					Item2Description ? Days : "",
+					Item2Description ? Days2 : "",
 					AUDPerDay2,
 					Item2Sub,
 				],
@@ -79,7 +84,7 @@ csvtojsonV2()
 					Item3Description,
 					Item3Description ? Start : "",
 					Item3Description ? End : "",
-					Item3Description ? Days : "",
+					Item3Description ? Days3 : "",
 					AUDPerDay3,
 					Item3Sub,
 				],
@@ -87,7 +92,7 @@ csvtojsonV2()
 					Item4Description,
 					Item4Description ? Start : "",
 					Item4Description ? End : "",
-					Item4Description ? Days : "",
+					Item4Description ? Days4 : "",
 					AUDPerDay4,
 					Item4Sub,
 				],
