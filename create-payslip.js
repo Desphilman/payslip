@@ -52,6 +52,12 @@ function desphilmanIranPaySlip({
 	// 	valign: "center",
 	// });
 
+	// doc.image("./images/novrouz-farvahar-poem.png", 225, 10, {
+	// 	fit: [170, 185],
+	// 	align: "center",
+	// 	valign: "center",
+	// });
+
 	doc.fontSize(20).text("Desphilman PTY LTD", 210, 170);
 
 	doc.moveTo(40, 340);
